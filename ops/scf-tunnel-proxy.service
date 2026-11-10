@@ -1,0 +1,31 @@
+[Unit]
+Description=SCF TCP Tunnel Proxy (HTTP CONNECT and SOCKS5)
+Wants=network-online.target
+After=network-online.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+User=scftunnel
+Group=scftunnel
+WorkingDirectory=/var/lib/scf-tunnel-proxy
+ExecStart=/opt/scf-tunnel-proxy/scf-tunnel -config /etc/scf-tunnel-proxy/agent.json
+Environment=TZ=Asia/Shanghai
+Restart=always
+RestartSec=10
+TimeoutStopSec=60
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/scf-tunnel-proxy
+MemoryHigh=256M
+MemoryMax=512M
+TasksMax=128
+LimitNOFILE=8192
+StandardOutput=append:/var/log/scf-tunnel-proxy/service.log
+StandardError=append:/var/log/scf-tunnel-proxy/service.log
+
+[Install]
+WantedBy=multi-user.target

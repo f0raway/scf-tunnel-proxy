@@ -1,0 +1,25 @@
+# Private configuration, credentials, endpoint inventory and usage ledger
+.env
+.env.*
+!.env.example
+/config/*
+!/config/*.example
+/runtime/
+/data/
+/state/
+/secrets/
+*.pem
+*.key
+*.crt
+*.ppx
+*.log
+*.tar.gz
+*.zip
+# Build and tooling output
+/dist/
+/scf-tunnel
+/scf-tunnel-linux-*
+__pycache__/
+*.pyc
+.venv/
+.DS_Store

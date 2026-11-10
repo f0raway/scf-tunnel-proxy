@@ -1,0 +1,25 @@
+[deployment]
+function_name = "scf_tunnel_proxy"
+namespace = "default"
+regions = ["ap-shanghai", "ap-guangzhou", "ap-beijing", "ap-chengdu", "ap-nanjing"]
+
+# Private generated files, relative to this config file unless absolute.
+[output]
+state_dir = "../runtime/deploy"
+agent_config = "../runtime/agent.json"
+
+[agent]
+http_addr = "0.0.0.0:10800"
+socks_addr = "0.0.0.0:10801"
+dashboard_addr = "127.0.0.1:8081"
+user = "cloudproxy"
+ledger_path = "/var/lib/scf-tunnel-proxy/usage.json"
+monthly_limit_yuan = 8.0
+max_connections = 32
+
+# Prefer environment variables TENCENTCLOUD_SECRET_ID/SECRET_KEY (and optional
+# TENCENTCLOUD_SESSION_TOKEN). If using this section, protect this file with 600.
+# [tencent]
+# secret_id = "YOUR_SECRET_ID"
+# secret_key = "YOUR_SECRET_KEY"
+# session_token = "YOUR_SESSION_TOKEN"
